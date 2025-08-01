@@ -47,55 +47,43 @@ def load_parameter_mapping():
         # File exists but can't be read properly - return empty mapping instead of warning
         return {}
 
-# Load processed data
+# Load processed data (minimal: only read existing pickle files)
 @st.cache_data(show_spinner=True)
-def load_data(data_dir, output_file):
-    # Resolve absolute paths for input dir
-    if not os.path.isabs(data_dir):
-        data_dir = os.path.abspath(data_dir)
-
-    # Choose a writable location for the processed pickle (avoid moving files in Cloud)
-    output_path = os.path.join(TMP_DIR if IN_STREAMLIT_CLOUD else os.getcwd(), output_file)
-
-    # If not already processed, try to use an existing file from the provided data_dir
-    if not os.path.exists(output_path):
-        data_output_path = os.path.join(data_dir, output_file)
-        if os.path.exists(data_output_path):
-            # Copy instead of move to keep original files intact and avoid read-only issues
-            with open(data_output_path, 'rb') as src, open(output_path, 'wb') as dst:
-                dst.write(src.read())
-        else:
-            # Attempt to process from raw files
-            st.info(f"Processing data from {data_dir}...")
-            script_path = os.path.join(os.path.dirname(__file__), 'data_processing.py')
-            result = subprocess.run([
-                sys.executable, script_path,
-                '--data-dir', data_dir,
-                '--output-file', output_path
-            ], capture_output=True, text=True)
-
-            if result.returncode != 0:
-                # Surface stderr in the Streamlit UI for easier debugging on Cloud
-                st.error("Failed to process data. Please verify data directory structure.")
-                st.code(result.stderr or "No stderr output.")
-                raise RuntimeError("Failed to process data")
-
-    # Load processed data
-    with open(output_path, 'rb') as f:
-        return pickle.load(f)
+def load_data_minimal(pickle_path_candidates):
+    """
+    Try a list of candidate pickle paths (relative to repo root or absolute).
+    Returns the first successfully loaded object.
+    """
+    for path in pickle_path_candidates:
+        try:
+            abs_path = path if os.path.isabs(path) else os.path.abspath(path)
+            if os.path.exists(abs_path):
+                with open(abs_path, 'rb') as f:
+                    return pickle.load(f)
+        except Exception as e:
+            # Continue trying other candidates
+            continue
+    # If none worked, raise a clear error
+    raise FileNotFoundError(
+        "Could not locate the required pickle file. "
+        "Ensure processed_station_data_*.pkl files exist at the repository root."
+    )
 
 @st.cache_data(show_spinner=True)
-def load_separate_data(data_dir):
-    """Load both daily and instantaneous values data."""
-    dv_file = 'processed_station_data_dv.pkl'
-    ir_file = 'processed_station_data_ir.pkl'
+def load_separate_data_minimal():
+    """Load both daily and instantaneous values data from existing pickles."""
+    # Candidate locations (repo root preferred; also look under code/Jorge for convenience)
+    dv_candidates = [
+        "processed_station_data_dv.pkl",
+        os.path.join("code", "Jorge", "processed_station_data_dv.pkl")
+    ]
+    ir_candidates = [
+        "processed_station_data_ir.pkl",
+        os.path.join("code", "Jorge", "processed_station_data_ir.pkl")
+    ]
 
-    # Load daily values data
-    dv_data = load_data(data_dir, dv_file)
-
-    # Load instantaneous values data
-    ir_data = load_data(data_dir, ir_file)
-
+    dv_data = load_data_minimal(dv_candidates)
+    ir_data = load_data_minimal(ir_candidates)
     return dv_data, ir_data
 
 # Create map with station locations
@@ -269,22 +257,14 @@ def main():
     # Load parameter mapping
     param_mapping = load_parameter_mapping()
     
-    # Get data directory from user input
-    st.sidebar.header("Data Configuration")
-    data_dir = st.sidebar.text_input(
-        "Data Directory",
-        "data/00_raw/from_NWIS_Data_Extractor",
-        help="Path to directory containing shapefile and CSV files"
-    )
-
-    output_file = st.sidebar.text_input(
-        "Output File",
-        "processed_station_data.pkl",
-        help="Output file name for processed data"
-    )
-
-    # Load data
-    dv_data, ir_data = load_separate_data(data_dir)
+    # Data loading (minimal: rely only on preprocessed pickles)
+    st.sidebar.header("Data")
+    st.sidebar.info("This app loads preprocessed pickles from the repo. No shapefile processing on the server.")
+    try:
+        dv_data, ir_data = load_separate_data_minimal()
+    except FileNotFoundError as e:
+        st.error(str(e))
+        st.stop()
 
     # Data type selection
     st.sidebar.header("Data Type Selection")

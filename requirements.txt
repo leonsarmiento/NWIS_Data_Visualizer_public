@@ -1,22 +1,13 @@
-# Streamlit Cloud requirements for NWIS Data Visualizer
+# Minimal Streamlit Cloud requirements (no heavy geo compile)
 
 # Core
 streamlit==1.36.0
 pandas==2.2.2
 plotly==5.22.0
 
-# Kepler.gl integration
+# Kepler.gl integration (pure-python / JS front-end)
 keplergl==0.3.7
 streamlit-keplergl==0.3.0
-
-# Geo stack (versions known to work together on manylinux)
-geopandas==0.14.4
-shapely==2.0.4
-pyproj==3.6.1
-fiona==1.9.6
-
-# JIT loaders sometimes needed by geopandas/fiona
-numpy==1.26.4
 
 # Optional utilities
 watchdog==4.0.1
