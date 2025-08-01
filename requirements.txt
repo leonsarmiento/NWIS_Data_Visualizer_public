@@ -1,11 +1,11 @@
-# Minimal Streamlit Cloud requirements (no heavy geo compile)
+# Streamlit Cloud requirements (stable pins, no heavy geo compile)
 
-# Core
-streamlit==1.36.0
-pandas==2.2.2
-plotly==5.22.0
+# Core (stable combo for Streamlit Cloud)
+streamlit==1.29.0
+pandas==2.0.3
+plotly==5.17.0
 
-# Kepler.gl integration (pure-python / JS front-end)
+# Kepler.gl integration (stable pair)
 keplergl==0.3.7
 streamlit-keplergl==0.3.0
 

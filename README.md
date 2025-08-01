@@ -46,6 +46,11 @@ python code/Jorge/data_processing.py --data-dir data/00_raw/from_NWIS_Data_Extra
 ```bash
 streamlit run app.py --server.port=8502
 ```
+or 
+```bash
+streamlit run code/Jorge/app.py --server.port=8502
+``` 
+to run from original path of app.py file location.
 
 5. Access the application at: [http://localhost:8502](http://localhost:8502)
 
