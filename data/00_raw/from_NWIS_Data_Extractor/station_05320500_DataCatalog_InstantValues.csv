@@ -1,0 +1,4 @@
+agency_cd,site_no,station_nm,site_tp_cd,dec_lat_va,dec_long_va,coord_acy_cd,dec_coord_datum_cd,alt_va,alt_acy_va,alt_datum_cd,huc_cd,data_type_cd,parm_cd,stat_cd,ts_id,loc_web_ds,medium_grp_cd,parm_grp_cd,srs_id,access_cd,begin_date,end_date,count_nu
+USGS,05320500,"LE SUEUR RIVER NEAR RAPIDAN, MN",ST,44.11760477,-94.0502846,S,NAD83,775.88,0.1,NAVD88,7020011,uv,60.0,,74611,,wat,,1645423,0,1993-10-01,2025-07-30,11625
+USGS,05320500,"LE SUEUR RIVER NEAR RAPIDAN, MN",ST,44.11760477,-94.0502846,S,NAD83,775.88,0.1,NAVD88,7020011,uv,65.0,,74610,,wat,,17164583,0,2011-09-01,2025-07-30,5081
+USGS,05320500,"LE SUEUR RIVER NEAR RAPIDAN, MN",ST,44.11760477,-94.0502846,S,NAD83,775.88,0.1,NAVD88,7020011,uv,63160.0,,301758,,wat,,1642503,0,2022-07-29,2025-07-30,1097

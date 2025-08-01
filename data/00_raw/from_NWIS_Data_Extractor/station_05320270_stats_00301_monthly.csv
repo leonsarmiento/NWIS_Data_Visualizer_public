@@ -1,0 +1,4 @@
+agency_cd,site_no,parameter_cd,ts_id,loc_web_ds,year_nu,month_nu,mean_va,count_nu
+USGS,05320270,00301,73390,,2006,6,92.8,16
+USGS,05320270,00301,73390,,2006,7,67.6,7
+USGS,05320270,00301,73390,,2006,8,75.2,14

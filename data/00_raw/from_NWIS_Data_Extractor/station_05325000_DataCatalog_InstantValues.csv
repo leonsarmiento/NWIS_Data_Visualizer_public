@@ -1,0 +1,4 @@
+agency_cd,site_no,station_nm,site_tp_cd,dec_lat_va,dec_long_va,coord_acy_cd,dec_coord_datum_cd,alt_va,alt_acy_va,alt_datum_cd,huc_cd,data_type_cd,parm_cd,stat_cd,ts_id,loc_web_ds,medium_grp_cd,parm_grp_cd,srs_id,access_cd,begin_date,end_date,count_nu
+USGS,05325000,"MINNESOTA RIVER AT MANKATO, MN",ST,44.17002549,-94.0023121,S,NAD83,748.0,0.1,NAVD88,7020007,uv,60.0,,74623,,wat,,1645423,0,2012-10-01,2025-07-30,4685
+USGS,05325000,"MINNESOTA RIVER AT MANKATO, MN",ST,44.17002549,-94.0023121,S,NAD83,748.0,0.1,NAVD88,7020007,uv,65.0,,74622,,wat,,17164583,0,2007-10-01,2025-07-30,6512
+USGS,05325000,"MINNESOTA RIVER AT MANKATO, MN",ST,44.17002549,-94.0023121,S,NAD83,748.0,0.1,NAVD88,7020007,uv,63160.0,,301759,,wat,,1642503,0,2022-07-29,2025-07-30,1097

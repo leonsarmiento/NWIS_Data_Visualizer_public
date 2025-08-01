@@ -1,0 +1,2 @@
+agency_cd,site_no,station_nm,site_tp_cd,dec_lat_va,dec_long_va,coord_acy_cd,dec_coord_datum_cd,alt_va,alt_acy_va,alt_datum_cd,huc_cd,data_type_cd,parm_cd,stat_cd,ts_id,loc_web_ds,medium_grp_cd,parm_grp_cd,srs_id,access_cd,begin_date,end_date,count_nu
+USGS,05320270,"LITTLE COBB RIVER NEAR BEAUFORD, MN",ST,43.9966325,-93.9085628,S,NAD83,975,5,NGVD29,7020011,uv,60.0,,221543,,wat,,1645423,0,1996-04-12,2010-09-30,5284

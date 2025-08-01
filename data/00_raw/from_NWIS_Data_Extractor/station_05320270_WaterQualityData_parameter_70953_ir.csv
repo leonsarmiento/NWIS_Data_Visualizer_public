@@ -1,0 +1,5 @@
+Activity_StartDate,Result_Measure,Result_MeasureUnit,Result_Characteristic,ResultAnalyticalMethod_Description,Result_CharacteristicGroup
+1997-08-18,36.2,ug/L,Chlorophyll a,"DESCRIPTION: Chlorophyll in phytoplankton by HPLC; CITATION(S): Britton, L.J., and Greeson, P.E., eds., 1989, Methods for collection and analysis of aquatic biological and microbiological samples: U.S. Geological Survey Techniques of Water-Resources Investigations, book 5, chap. A4, p. 223-225. | USGS | B-6530-85",Biological
+2005-06-15,45.9,ug/L,Chlorophyll a,"DESCRIPTION: Fluorometric, Chlorophyll A, Phytoplankton; CITATION(S): USEPA | 445.0",Biological
+2005-08-03,61.2,ug/L,Chlorophyll a,"DESCRIPTION: Fluorometric, Chlorophyll A, Phytoplankton; CITATION(S): USEPA | 445.0",Biological
+2005-09-07,24.1,ug/L,Chlorophyll a,"DESCRIPTION: Fluorometric, Chlorophyll A, Phytoplankton; CITATION(S): USEPA | 445.0",Biological

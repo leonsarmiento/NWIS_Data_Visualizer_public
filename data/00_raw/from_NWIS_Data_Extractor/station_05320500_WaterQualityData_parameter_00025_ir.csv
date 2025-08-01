@@ -1,0 +1,51 @@
+Activity_StartDate,Result_Measure,Result_MeasureUnit,Result_Characteristic,ResultAnalyticalMethod_Description,Result_CharacteristicGroup
+1989-08-28,738,mmHg,Barometric pressure,,Physical
+1990-01-31,735,mmHg,Barometric pressure,,Physical
+1990-03-11,734,mmHg,Barometric pressure,,Physical
+1990-03-13,734,mmHg,Barometric pressure,,Physical
+1990-03-14,729,mmHg,Barometric pressure,,Physical
+1990-03-16,730,mmHg,Barometric pressure,,Physical
+1990-03-21,738,mmHg,Barometric pressure,,Physical
+1990-03-28,745,mmHg,Barometric pressure,,Physical
+1990-05-31,743,mmHg,Barometric pressure,,Physical
+1990-08-29,739,mmHg,Barometric pressure,,Physical
+1991-03-16,746,mmHg,Barometric pressure,,Physical
+1991-03-19,742,mmHg,Barometric pressure,,Physical
+1991-03-20,733,mmHg,Barometric pressure,,Physical
+1991-03-21,728,mmHg,Barometric pressure,,Physical
+1991-03-23,729,mmHg,Barometric pressure,,Physical
+1991-03-26,726,mmHg,Barometric pressure,,Physical
+1991-03-27,728,mmHg,Barometric pressure,,Physical
+1991-04-03,745,mmHg,Barometric pressure,,Physical
+1991-04-09,741,mmHg,Barometric pressure,,Physical
+1991-05-06,739,mmHg,Barometric pressure,,Physical
+1991-05-07,748,mmHg,Barometric pressure,,Physical
+1991-05-08,748,mmHg,Barometric pressure,,Physical
+1991-05-14,736,mmHg,Barometric pressure,,Physical
+1991-06-05,747,mmHg,Barometric pressure,,Physical
+1991-07-22,743,mmHg,Barometric pressure,,Physical
+1991-07-23,749,mmHg,Barometric pressure,,Physical
+1991-07-24,745,mmHg,Barometric pressure,,Physical
+1991-07-26,749,mmHg,Barometric pressure,,Physical
+1992-04-15,741,mmHg,Barometric pressure,,Physical
+1992-04-20,730,mmHg,Barometric pressure,,Physical
+1992-04-21,726,mmHg,Barometric pressure,,Physical
+1992-04-22,737,mmHg,Barometric pressure,,Physical
+1992-04-23,743,mmHg,Barometric pressure,,Physical
+1992-04-24,745,mmHg,Barometric pressure,,Physical
+1992-04-27,751,mmHg,Barometric pressure,,Physical
+1992-04-30,737,mmHg,Barometric pressure,,Physical
+1992-08-08,738,mmHg,Barometric pressure,,Physical
+2013-05-07,740,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-05-14,735,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-05-21,732,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-06-04,742,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-06-11,740,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-06-11,740,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-06-26,734,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-06-30,739,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-07-09,736,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-07-16,739,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-07-22,734,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-07-30,739,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical
+2013-08-05,732,mmHg,Barometric pressure,"DESCRIPTION: Atmospheric pressure, barometer method; CITATION(S): U.S. Geological Survey, [variously dated], National field manual for the collection of water-quality data: U.S. Geological Survey Techniques of Water-Resources Investigations, book 9, chaps. A1-A9, available online at https://www.usgs.gov/mission-areas/water-resources/science/national-field-manual-collection-water-quality-data-nfm. | USGS | NFM 6.2",Physical

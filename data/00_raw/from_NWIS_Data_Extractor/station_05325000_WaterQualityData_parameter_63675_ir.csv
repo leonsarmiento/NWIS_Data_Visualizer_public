@@ -1,0 +1,11 @@
+Activity_StartDate,Result_Measure,Result_MeasureUnit,Result_Characteristic,ResultAnalyticalMethod_Description,Result_CharacteristicGroup
+2006-08-31,29,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2007-02-21,4.9,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2007-03-22,170,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2007-05-17,27,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2007-07-05,82,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2007-08-29,73,NTU,Turbidity,"DESCRIPTION: HACH, sensor model 2100 N (Ratio OFF), NTU; CITATION(S): USEPA | 180.1",Physical
+2011-09-20,30,NTU,Turbidity,,Physical
+2012-04-17,50,NTU,Turbidity,"DESCRIPTION: HF Scientific, sensor model DRT-15CE, NTU; CITATION(S): USEPA | 180.1",Physical
+2012-04-17,50,NTU,Turbidity,"DESCRIPTION: HF Scientific, sensor model DRT-15CE, NTU; CITATION(S): USEPA | 180.1",Physical
+2012-04-17,50,NTU,Turbidity,"DESCRIPTION: HF Scientific, sensor model DRT-15CE, NTU; CITATION(S): USEPA | 180.1",Physical
