@@ -16,6 +16,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_keplergl import keplergl_static
 
+# Detect Streamlit Cloud (read-only repo) vs local
+IN_STREAMLIT_CLOUD = os.environ.get("STREAMLIT_RUNTIME", "") != ""
+# Writable temp/data directory (Streamlit provides /tmp)
+TMP_DIR = os.environ.get("STREAMLIT_TMP_DIR", "/tmp")
+os.makedirs(TMP_DIR, exist_ok=True)
+
 # Load parameter mapping from the query file
 def load_parameter_mapping():
     """Load parameter code to name mapping from parameter_cd_query.csv"""
@@ -42,36 +48,43 @@ def load_parameter_mapping():
         return {}
 
 # Load processed data
+@st.cache_data(show_spinner=True)
 def load_data(data_dir, output_file):
-    # Convert relative path to absolute path
+    # Resolve absolute paths for input dir
     if not os.path.isabs(data_dir):
         data_dir = os.path.abspath(data_dir)
 
-    # Use current working directory for output file
-    output_path = os.path.join(os.getcwd(), output_file)
+    # Choose a writable location for the processed pickle (avoid moving files in Cloud)
+    output_path = os.path.join(TMP_DIR if IN_STREAMLIT_CLOUD else os.getcwd(), output_file)
+
+    # If not already processed, try to use an existing file from the provided data_dir
     if not os.path.exists(output_path):
-        # Check if processed data file exists in data directory
         data_output_path = os.path.join(data_dir, output_file)
         if os.path.exists(data_output_path):
-            # Move existing file to current directory
-            os.rename(data_output_path, output_path)
+            # Copy instead of move to keep original files intact and avoid read-only issues
+            with open(data_output_path, 'rb') as src, open(output_path, 'wb') as dst:
+                dst.write(src.read())
         else:
-            # Run data processing script
-            print(f"Processing data from {data_dir}...")
+            # Attempt to process from raw files
+            st.info(f"Processing data from {data_dir}...")
+            script_path = os.path.join(os.path.dirname(__file__), 'data_processing.py')
             result = subprocess.run([
-                sys.executable, 'data_processing.py',
+                sys.executable, script_path,
                 '--data-dir', data_dir,
-                '--output-file', output_file
+                '--output-file', output_path
             ], capture_output=True, text=True)
 
             if result.returncode != 0:
-                print(f"Error processing data: {result.stderr}")
+                # Surface stderr in the Streamlit UI for easier debugging on Cloud
+                st.error("Failed to process data. Please verify data directory structure.")
+                st.code(result.stderr or "No stderr output.")
                 raise RuntimeError("Failed to process data")
 
     # Load processed data
     with open(output_path, 'rb') as f:
         return pickle.load(f)
 
+@st.cache_data(show_spinner=True)
 def load_separate_data(data_dir):
     """Load both daily and instantaneous values data."""
     dv_file = 'processed_station_data_dv.pkl'
