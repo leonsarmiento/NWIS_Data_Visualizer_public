@@ -252,7 +252,15 @@ def main():
     # Get the directory where this script is located
     script_dir = os.path.dirname(os.path.abspath(__file__))
     banner_path = os.path.join(script_dir, "NCI_banner.png")
-    st.image(banner_path, use_container_width=True)
+    
+    # Check if banner file exists before trying to display it
+    if os.path.exists(banner_path):
+        st.image(banner_path, use_container_width=True)
+    else:
+        # Fallback: Try to display banner from a more general location
+        # or just skip the banner if it's not found
+        st.markdown("### NWIS Data Visualizer")
+        st.markdown("---")
     
     # Ensure proper styling for the banner
     st.markdown("---")
