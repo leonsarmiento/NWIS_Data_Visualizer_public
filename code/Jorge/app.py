@@ -16,12 +16,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_keplergl import keplergl_static
 
-# Detect Streamlit Cloud (read-only repo) vs local
-IN_STREAMLIT_CLOUD = os.environ.get("STREAMLIT_RUNTIME", "") != ""
-# Writable temp/data directory (Streamlit provides /tmp)
-TMP_DIR = os.environ.get("STREAMLIT_TMP_DIR", "/tmp")
-os.makedirs(TMP_DIR, exist_ok=True)
-
 # Load parameter mapping from the query file
 def load_parameter_mapping():
     """Load parameter code to name mapping from parameter_cd_query.csv"""
@@ -47,43 +41,48 @@ def load_parameter_mapping():
         # File exists but can't be read properly - return empty mapping instead of warning
         return {}
 
-# Load processed data (minimal: only read existing pickle files)
-@st.cache_data(show_spinner=True)
-def load_data_minimal(pickle_path_candidates):
-    """
-    Try a list of candidate pickle paths (relative to repo root or absolute).
-    Returns the first successfully loaded object.
-    """
-    for path in pickle_path_candidates:
-        try:
-            abs_path = path if os.path.isabs(path) else os.path.abspath(path)
-            if os.path.exists(abs_path):
-                with open(abs_path, 'rb') as f:
-                    return pickle.load(f)
-        except Exception as e:
-            # Continue trying other candidates
-            continue
-    # If none worked, raise a clear error
-    raise FileNotFoundError(
-        "Could not locate the required pickle file. "
-        "Ensure processed_station_data_*.pkl files exist at the repository root."
-    )
+# Load processed data
+def load_data(data_dir, output_file):
+    # Convert relative path to absolute path
+    if not os.path.isabs(data_dir):
+        data_dir = os.path.abspath(data_dir)
 
-@st.cache_data(show_spinner=True)
-def load_separate_data_minimal():
-    """Load both daily and instantaneous values data from existing pickles."""
-    # Candidate locations (repo root preferred; also look under code/Jorge for convenience)
-    dv_candidates = [
-        "processed_station_data_dv.pkl",
-        os.path.join("code", "Jorge", "processed_station_data_dv.pkl")
-    ]
-    ir_candidates = [
-        "processed_station_data_ir.pkl",
-        os.path.join("code", "Jorge", "processed_station_data_ir.pkl")
-    ]
+    # Use current working directory for output file
+    output_path = os.path.join(os.getcwd(), output_file)
+    if not os.path.exists(output_path):
+        # Check if processed data file exists in data directory
+        data_output_path = os.path.join(data_dir, output_file)
+        if os.path.exists(data_output_path):
+            # Move existing file to current directory
+            os.rename(data_output_path, output_path)
+        else:
+            # Run data processing script
+            print(f"Processing data from {data_dir}...")
+            result = subprocess.run([
+                sys.executable, 'data_processing.py',
+                '--data-dir', data_dir,
+                '--output-file', output_file
+            ], capture_output=True, text=True)
 
-    dv_data = load_data_minimal(dv_candidates)
-    ir_data = load_data_minimal(ir_candidates)
+            if result.returncode != 0:
+                print(f"Error processing data: {result.stderr}")
+                raise RuntimeError("Failed to process data")
+
+    # Load processed data
+    with open(output_path, 'rb') as f:
+        return pickle.load(f)
+
+def load_separate_data(data_dir):
+    """Load both daily and instantaneous values data."""
+    dv_file = 'processed_station_data_dv.pkl'
+    ir_file = 'processed_station_data_ir.pkl'
+
+    # Load daily values data
+    dv_data = load_data(data_dir, dv_file)
+
+    # Load instantaneous values data
+    ir_data = load_data(data_dir, ir_file)
+
     return dv_data, ir_data
 
 # Create map with station locations
@@ -249,6 +248,15 @@ def plot_time_series_ir(df):
 
 # Main application
 def main():
+    # Display NCI banner at the top of the page
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    banner_path = os.path.join(script_dir, "NCI_banner.png")
+    st.image(banner_path, use_container_width=True)
+    
+    # Ensure proper styling for the banner
+    st.markdown("---")
+    
     st.title("NWIS Data Visualizer")
     
     # Permanent link to USGS parameter codes
@@ -257,14 +265,22 @@ def main():
     # Load parameter mapping
     param_mapping = load_parameter_mapping()
     
-    # Data loading (minimal: rely only on preprocessed pickles)
-    st.sidebar.header("Data")
-    st.sidebar.info("This app loads preprocessed pickles from the repo. No shapefile processing on the server.")
-    try:
-        dv_data, ir_data = load_separate_data_minimal()
-    except FileNotFoundError as e:
-        st.error(str(e))
-        st.stop()
+    # Get data directory from user input
+    st.sidebar.header("Data Configuration")
+    data_dir = st.sidebar.text_input(
+        "Data Directory",
+        "data/00_raw/from_NWIS_Data_Extractor",
+        help="Path to directory containing shapefile and CSV files"
+    )
+
+    output_file = st.sidebar.text_input(
+        "Output File",
+        "processed_station_data.pkl",
+        help="Output file name for processed data"
+    )
+
+    # Load data
+    dv_data, ir_data = load_separate_data(data_dir)
 
     # Data type selection
     st.sidebar.header("Data Type Selection")
