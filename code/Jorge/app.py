@@ -255,7 +255,7 @@ def main():
     
     # Check if banner file exists before trying to display it
     if os.path.exists(banner_path):
-        st.image(banner_path, use_container_width=True)
+        st.image(banner_path)
     else:
         # Fallback: Try to display banner from a more general location
         # or just skip the banner if it's not found
