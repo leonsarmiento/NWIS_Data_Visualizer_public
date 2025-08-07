@@ -84,6 +84,16 @@ For development, it's recommended to install:
 pip install watchdog  # Improves Streamlit performance
 ```
 
+## Streamlit Hub Deployment Notes
+
+When deploying to Streamlit Hub, be aware that some Streamlit functions and parameters may not be fully supported in the deployed environment. For example, the `use_container_width=True` parameter in `st.image()` calls can cause TypeError exceptions on Streamlit Hub due to version differences.
+
+To avoid such issues:
+1. Always test your application locally before deployment
+2. Check for parameter compatibility across different Streamlit versions
+3. Implement fallback mechanisms for optional features
+4. Use version-specific parameters when necessary
+
 ## License
 
 This project is open source. See LICENSE file for details.
